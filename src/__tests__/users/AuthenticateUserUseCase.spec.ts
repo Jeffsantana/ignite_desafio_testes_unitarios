@@ -12,15 +12,14 @@ describe("Verify authenticate", () => {
         authenticateUserUserCase = new AuthenticateUserUseCase(inMemoryUsersRepository);
         createUser = new CreateUserUseCase(inMemoryUsersRepository);
     })
-    it("Should be able to create a session", async () => {
+    it("Should be able to create a new user and new session", async () => {
         const newUser = {
             name: "User Test",
             email: "user@newuser.com",
             password: "112358"
         }
         await createUser.execute(newUser);
-        const authenticate = await authenticateUserUserCase.execute(newUser)
-        console.log("🚀 ~ authenticate", authenticate);
+        const authenticate = await authenticateUserUserCase.execute(newUser);
         expect(authenticate).toHaveProperty("token")
     })
 })

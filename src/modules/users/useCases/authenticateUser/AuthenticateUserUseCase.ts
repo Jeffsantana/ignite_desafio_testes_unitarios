@@ -33,7 +33,6 @@ export class AuthenticateUserUseCase {
       throw new IncorrectEmailOrPasswordError();
     }
 
-    console.log("🚀 ~ AuthenticateUserUsexCase ~ authConfig", authConfig);
     const { secret, expiresIn } = authConfig.jwt;
 
     const token = sign({ user }, secret, {
